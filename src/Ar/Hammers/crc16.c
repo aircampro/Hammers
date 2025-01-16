@@ -229,6 +229,36 @@ static crc32_t g_crc32_table[CRC_TABLE_SIZE];
 #define REFLECT_REMAINDER32(X)   ((crc32_t) reflect((X), WIDTH))
 
 /*-----------------------------------------------------------------------------
+ *      reflect:  Reflect calculation
+ *
+ *  Parameters: uint32_t dataD, uint8_t n_bits
+ *
+ *  Return:     uint32_t
+ *----------------------------------------------------------------------------*/
+uint32_t reflect(uint32_t dataD, uint8_t n_bits)
+{
+   uint32_t reflection = 0x00000000UL;
+   uint8_t bitcount;
+
+   /* NOTE: For efficiency sake, n_bits is not verified to be <= 32. */
+
+   /* Reflect the data about the center bit. */
+   for (bitcount = 0u; (bitcount < n_bits); bitcount++)
+   {
+
+       if (dataD & 0x01u)
+       {
+           reflection |= (1u << ((n_bits - 1u) - bitcount));                    /* If the LSB bit is set, set the reflection of it. */
+       }
+
+       dataD = (dataD >> 1u);
+   }
+
+  return (reflection);
+
+}  /* reflect() */
+
+/*-----------------------------------------------------------------------------
  *  ccitt_crc_init:  Initialize the table for the chosen CRC when using fast method
  *                 (noramlly you do it at boot-up)
  *

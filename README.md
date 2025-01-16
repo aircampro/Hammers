@@ -16,6 +16,19 @@ This library has a compilation of tools including:
 -subtract with a rollover - Used to find difference in two numbers with a rollover taken into account.  
 -hamTempSensorFn - Used from user defined temperature warnings.  
 -crc_16 - Calculates the 16 bits Cyclic Redundancy Check.  
+-ccitt_crc_init - init lookup for ccitt crc fast
+-crc32_init - init lookup for crc32 fast
+-crc16_init - init lookup for crc16 fast
+-ccitt_crc_slow - ccitt crc slow
+-crc32_slow -  crc32 slow
+-crc16_slow -  crc16 slow
+-ccitt_crc_fast - ccitt crc fast
+-crc32_fast -  crc32 fast
+-crc16_fast -  crc16 fast
+-crc8 - crc8
+- crc16_arc_fast - crc 16 arc fast
+- usMBCRC16 - modbus RTU crc
+- usMBAsciiLRC - modbus ascii LRC
 -FastTON - Implements a switch on delay.  
 -Interval - Implements a periodic switch on delay.  
 -SimulationStatus - Used to return the simulation status of the processor. 
